@@ -1,7 +1,7 @@
 import os
 from configurations import values
 from boto.s3.connection import OrdinaryCallingFormat
-from .common import Common
+from {{cookiecutter.app_name}}.config.common import Common
 
 try:
     # Python 2.x
@@ -19,6 +19,9 @@ class Production(Common):
 
     INSTALLED_APPS = Common.INSTALLED_APPS
     SECRET_KEY = values.SecretValue()
+
+    # Postgres
+    DATABASES = values.DatabaseURLValue('postgres://localhost/{{cookiecutter.app_name}}')
 
     # django-secure
     # http://django-secure.readthedocs.org/en/v0.1.2/settings.html

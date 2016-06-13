@@ -1,5 +1,5 @@
 import os
-from .common import Common
+from {{cookiecutter.app_name}}.config.common import Common
 from configurations import values
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -11,17 +11,25 @@ class Local(Common):
     for config in Common.TEMPLATES:
         config['OPTIONS']['debug'] = DEBUG
 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+
     # Testing
-    INSTALLED_APPS = Common.INSTALLED_APPS
-    INSTALLED_APPS += ('django_nose',)
-    TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-    NOSE_ARGS = [
-        BASE_DIR,
-        '--nologcapture',
-        '--with-coverage',
-        '--with-progressive',
-        '--cover-package={}'.format(BASE_DIR)
-    ]
+    # INSTALLED_APPS = Common.INSTALLED_APPS
+    # INSTALLED_APPS += ('django_nose',)
+    # TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+    # NOSE_ARGS = [
+    #     BASE_DIR,
+    #     '--nologcapture',
+    #     '--with-coverage',
+    #     '--with-progressive',
+    #     '--cover-package={}'.format(BASE_DIR)
+    # ]
 
     # Mail
     EMAIL_HOST = 'localhost'

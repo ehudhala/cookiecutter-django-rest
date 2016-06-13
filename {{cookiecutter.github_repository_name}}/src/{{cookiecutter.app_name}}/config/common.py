@@ -9,13 +9,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class Common(Configuration):
 
     INSTALLED_APPS = (
+        # Admin templates
+        'suit',
+
+        # Django
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-
 
         # Third party apps
         'rest_framework',            # utilities for rest apis
@@ -24,8 +27,8 @@ class Common(Configuration):
         'versatileimagefield',       # image manipulation
 
         # Your apps
-        'authentication',
-        'users'
+        '{{cookiecutter.app_name}}.authentication',
+        '{{cookiecutter.app_name}}.users'
 
     )
 
@@ -52,12 +55,9 @@ class Common(Configuration):
         ('Author', '{{cookiecutter.email}}'),
     )
 
-    # Postgres
-    DATABASES = values.DatabaseURLValue('postgres://localhost/{{cookiecutter.app_name}}')
-
     # General
     APPEND_SLASH = values.BooleanValue(False)
-    TIME_ZONE = 'UTC'
+    TIME_ZONE = 'Asia/Jerusalem'
     LANGUAGE_CODE = 'en-us'
     # If you set this to False, Django will make some optimizations so as not
     # to load the internationalization machinery.
@@ -82,9 +82,10 @@ class Common(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [STATICFILES_DIRS],
+            'DIRS': STATICFILES_DIRS,
             'OPTIONS': {
                 'context_processors': [
+                    'django.core.context_processors.request',
                     'django.contrib.auth.context_processors.auth',
                     'django.template.context_processors.debug',
                     'django.template.context_processors.i18n',
@@ -102,6 +103,20 @@ class Common(Configuration):
             },
         },
     ]
+
+    SUIT_CONFIG = {
+        # header
+        'ADMIN_NAME': '{{cookiecutter.app_name | replace("_", " ") | replace("-", " ") | title}} Admin',
+
+        # menu
+        'MENU_ICONS': {
+            'sites': 'icon-leaf',
+            'auth': 'icon-lock',
+        },
+        'MENU_OPEN_FIRST_CHILD': False,
+        'MENU_EXCLUDE': ('authtoken'),
+    }
+
 
     # Set DEBUG to False as a default for safety
     # https://docs.djangoproject.com/en/dev/ref/settings/#debug
