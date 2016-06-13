@@ -4,6 +4,7 @@ from os.path import join
 from configurations import Configuration, values
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_PATH = os.path.dirname(os.path.dirname(BASE_DIR))
 
 
 class Common(Configuration):
@@ -67,8 +68,8 @@ class Common(Configuration):
     LOGIN_REDIRECT_URL = '/'
 
     # Static Files
-    STATIC_ROOT = join(os.path.dirname(BASE_DIR), 'staticfiles')
-    STATICFILES_DIRS = [join(os.path.dirname(BASE_DIR), 'static'), ]
+    STATIC_ROOT = join(PROJECT_PATH, 'static_root', 'static')
+    STATICFILES_DIRS = [join(PROJECT_PATH, 'client', 'static'), ]
     STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -76,13 +77,13 @@ class Common(Configuration):
     )
 
     # Media files
-    MEDIA_ROOT = join(os.path.dirname(BASE_DIR), 'media')
+    MEDIA_ROOT = join(PROJECT_PATH, 'client', 'static')
     MEDIA_URL = '/media/'
 
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': STATICFILES_DIRS,
+            'DIRS': [join(MEDIA_ROOT, 'build')],
             'OPTIONS': {
                 'context_processors': [
                     'django.core.context_processors.request',
