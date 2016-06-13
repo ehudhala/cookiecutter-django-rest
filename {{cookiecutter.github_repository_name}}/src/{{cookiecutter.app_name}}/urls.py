@@ -8,13 +8,13 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 
-from {{cookiecutter.app_name}}.users.views import UserViewSet
+from {{cookiecutter.app_name}}.users.views import UserViewSet, home
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 
-urlpatterns = [
-    url(r'^/?$', 'users.views.home'),
+urlpatterns = ([
+    url(r'^$', home),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/v1/', include('authentication.urls')),
@@ -24,4 +24,5 @@ urlpatterns = [
     # http://www.django-rest-framework.org/api-guide/routers/#defaultrouter
     # url(r'^rest/$', RedirectView.as_view(url=reverse_lazy('api-root'), permanent=False)),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+      + [url(r'^.*$', home)])
