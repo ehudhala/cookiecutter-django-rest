@@ -14,7 +14,8 @@
                     span (Hint: Select me!)
                 li.list-group-item
                     label.control-label Message
-                        input(ng-model='message', ng-init="message", nino-enter="chatVm.sendMessage(message)")
+                        form(ng-submit="chatVm.sendMessage(message)")
+                            input(ng-model='message', ng-init="message")
                     p (Hint: Write your meesage, and press Enter!)
                 li.list-group-item(ng-repeat="message in chatVm.messageList")
                     | {{ message.data }}

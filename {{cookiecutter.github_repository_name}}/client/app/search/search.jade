@@ -12,7 +12,8 @@
                 
                 li.list-group-item
                     label.control-label Term
-                        input(ng-model='searchVm.searchTerm', ng-init="searchVm.searchTerm", nino-enter="searchVm.search(searchVm.searchTerm)")
+                        form(ng-submit="searchVm.search(searchVm.searchTerm)")
+                            input(ng-model='searchVm.searchTerm', ng-init="searchVm.searchTerm")
                     span  (Hint: Enter on me!)
                 
                 li.list-group-item(ng-repeat="result in searchVm.searchResults")
