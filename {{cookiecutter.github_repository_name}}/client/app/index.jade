@@ -1,5 +1,5 @@
 {% raw %}
-include mixins.pug
+include mixins.jade
 
 doctype html
 
@@ -7,7 +7,7 @@ html(lang="en", ng-app="app")
     head
         meta(charset="utf-8")
         link(rel="shortcut icon", href="/media/images/favicon.png")
-        title Nino
+        title {% endraw %} {{cookiecutter.app_name | replace('_', ' ') | replace('-', ' ') | title }} {% raw %}
         
         base(href="/")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -44,7 +44,7 @@ html(lang="en", ng-app="app")
         +script("/media/build/app.js")
     
     body(ng-cloak)
-        div#wrapper(ui-view)
+        include skeleton/skeleton.jade
 
 {% endraw %}
 

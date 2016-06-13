@@ -13,10 +13,10 @@
     function getStates() {
         return [
             {
-                state: 'hello',
+                state: 'home',
                 config: {
                     url: '/',
-                    templateUrl: '/media/build/layout/hello.html'
+                    templateUrl: '/media/build/home/home.html'
                 }
             },
             {
