@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.search', [])
+        .module('{{cookiecutter.angular_app_name}}.search', [])
         .constant('defaultTitle', 'An elegant title...')
         .controller('SearchController', SearchController);
 

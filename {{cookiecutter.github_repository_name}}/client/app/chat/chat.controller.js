@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.chat', [])
+        .module('{{cookiecutter.angular_app_name}}.chat', [])
         .controller('ChatController', ChatController);
 
     /* @ngInject */

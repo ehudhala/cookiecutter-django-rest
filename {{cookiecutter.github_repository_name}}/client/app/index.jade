@@ -3,18 +3,18 @@ include mixins.jade
 
 doctype html
 
-html(lang="en", ng-app="app")
+html(lang="en", ng-app="{% endraw %}{{cookiecutter.angular_app_name}}{% raw %}")
     head
         meta(charset="utf-8")
         link(rel="shortcut icon", href="/media/images/favicon.png")
-        title {% endraw %} {{cookiecutter.app_name | replace('_', ' ') | replace('-', ' ') | title }} {% raw %}
+        title {% endraw %} {{cookiecutter.app_title}} {% raw %}
         
         base(href="/")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(name="description", content="Search Stuff")
         meta(name="author", content="Ofir123")
 
-        | {% if config.DEBUG %}
+        | {% if USE_LIVE_RELOAD %}
         // Including livereload in production cause a performance hit for users,
             so django will not emit the following line if the settings are not set to debug.
         // buildCfg is provided by gulp and is the same as build.config.js.
@@ -39,12 +39,17 @@ html(lang="en", ng-app="app")
         
         +style("/media/bower_components/angular-ui-select/dist/select.min.css")
         +script("/media/bower_components/angular-ui-select/dist/select.min.js")
-        
+
+        +script("/media/bower_components/underscore/underscore-min.js")
+
+        +script("/media/assets/djng-forms.js")
+
         +style("/media/build/app.css")
         +script("/media/build/app.js")
-    
+
     body(ng-cloak)
+        | {% verbatim %}
         include skeleton/skeleton.jade
+        | {% endverbatim %}
 
 {% endraw %}
-

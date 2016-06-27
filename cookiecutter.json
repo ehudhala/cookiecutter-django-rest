@@ -1,6 +1,8 @@
 {
-    "github_repository_name": "Boilerplate",
-    "app_name": "boilerplate",
+    "github_repository_name": "my_app_g",
+    "app_name": "my_app",
+    "app_title": "{{cookiecutter.app_name | replace('_', ' ') | replace('-', ' ') | title}}",
+    "angular_app_name": "{{cookiecutter.app_title | replace(cookiecutter.app_title | first, cookiecutter.app_title | first | lower, 1) | replace(' ', '')}}",
     "email": "ehudhala@hotmail.com",
     "description": "Something good is going on here",
     "github_username": "ehudhala"

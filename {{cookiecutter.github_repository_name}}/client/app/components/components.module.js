@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('app.components', []);
+        .module('{{cookiecutter.angular_app_name}}.components', []);
 
 })();

@@ -1,0 +1,15 @@
+{% raw %}
+
+form.navbar-form.navbar-right(ng-controller='LoginController as loginVm', ng-submit='loginVm.auth()')
+    div(ng-class="{'has-error': loginVm.hasError}")
+        .input-group
+            span.input-group-addon
+                i.fa.fa-user
+            input.form-control(ng-model='loginVm.username', name='username', placeholder='Username')
+        .input-group
+            span.input-group-addon
+                i.fa.fa-lock
+            input.form-control(ng-model='loginVm.password', type='password', name='password', placeholder='Password')
+        button.btn.btn-primary(type='submit') Login
+
+{% endraw %}

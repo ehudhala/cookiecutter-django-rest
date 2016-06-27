@@ -10,7 +10,7 @@ nav.navbar.navbar-default(role='navigation')
 
             a.navbar-brand(href='/')
                 i.fa.fa-pie-chart
-                | {% endraw %} {{cookiecutter.app_name | replace('_', ' ') | replace('-', ' ') | title }} {% raw %}
+                | {% endraw %} {{cookiecutter.app_title}} {% raw %}
 
         #navbar-items.collapse.navbar-collapse
             ul.nav.navbar-nav
@@ -24,6 +24,23 @@ nav.navbar.navbar-default(role='navigation')
                     a(ui-sref="chat")
                         i.fa Chat
 
+            ul.nav.navbar-nav.navbar-right(ng-controller='AuthController as authVm')
+                li(ng-if='!authVm.isLoggedIn()')
+                    a(href='', ng-click='authVm.openLoginModal()')
+                        i.fa Login
+
+                li(uib-dropdown, ng-if='authVm.isLoggedIn()')
+                    a(uib-dropdown-toggle, href='')
+                        i.fa
+                            | Welcome, {{ authVm.user.username }}&nbsp;
+                            i.fa-caret-down
+                    ul.dropdown-menu(uib-dropdown-menu, role='menu')
+                        li(role='menuitem')
+                            a(href='', ng-click='authVm.logOut()') Logout
+                        //li.divider
+
+
 .container
     div#wrapper(ui-view)
 {% endraw %}
+

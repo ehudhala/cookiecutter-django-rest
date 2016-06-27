@@ -2,17 +2,17 @@
     'use strict';
 
     angular
-        .module('app', [
+        .module('{{cookiecutter.angular_app_name}}', [
             // Angular libraries.
             'ngAnimate', 'ngResource', 'ngSanitize',
             // External libraries.
-            'ui.bootstrap', 'ui.router', 'ui.select',
+            'ui.bootstrap', 'ui.router', 'ui.select', 'djng.forms',
             // Basic app blocks.
             'blocks.router',
             // Services & Components.
-            'app.services', 'app.components',
+            '{{cookiecutter.angular_app_name}}.services', '{{cookiecutter.angular_app_name}}.components',
             // Feature modules.
-            'app.chat', 'app.search'
+            '{{cookiecutter.angular_app_name}}.chat', '{{cookiecutter.angular_app_name}}.search', '{{cookiecutter.angular_app_name}}.auth',
         ])
         .run(setGlobalState);
 

@@ -11,7 +11,7 @@ module.exports = {
 		js: ['app/**/*.module.js', 'app/**/*.js'],
 		pug: ['app/**/*.pug', 'app/**/*.jade'],
         stylus: 'app/**/*.styl',
-        compiledCss: 'compile/css/**/*.css'
+        compiledCss: 'static/compile/css/**/*.css'
 	},
     livereloadPort: 35729
 };

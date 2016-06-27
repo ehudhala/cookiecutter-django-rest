@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('{{cookiecutter.angular_app_name}}')
         .run(appRun);
 
     /* @ngInject */
@@ -42,7 +42,7 @@
                     templateUrl: '/media/build/chat/chat.html',
                     controller: 'ChatController as chatVm'
                 }
-            }
+            },
         ];
     }
 

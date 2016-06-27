@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.services')
+        .module('{{cookiecutter.angular_app_name}}.services')
         .factory('roomService', roomService);
 
     function roomService() {
