@@ -1,7 +1,7 @@
 {
-  "name": "nino",
-  "description": "The coolest boiler-plate out there",
-  "author": "Ofir123",
+  "name": "{{ cookiecutter.angular_app_name }}",
+  "description": "{{ cookiecutter.description }}",
+  "author": "{{ cookiecutter.email }}",
   "dependencies": {
     "jquery": "~2.2.3",
     "underscore": "~1.8.3",

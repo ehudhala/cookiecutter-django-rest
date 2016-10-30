@@ -1,8 +1,8 @@
 {
-  "name": "nino",
+  "name": "{{ cookiecutter.angular_app_name }}",
   "version": "1.0.0",
-  "description": "The coolest boiler-plate out there",
-  "author": "Ofir123",
+  "description": "{{ cookiecutter.description }}",
+  "author": "{{ cookiecutter.email }}",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-util": "^3.0.4",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ofir123/Nino.git"
+    "url": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.github_repository_name }}.git"
   },
   "license": "MIT"
 }

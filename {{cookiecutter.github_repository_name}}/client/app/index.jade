@@ -3,7 +3,7 @@ include mixins.jade
 
 doctype html
 
-html(lang="en", ng-app="{% endraw %}{{cookiecutter.angular_app_name}}{% raw %}")
+html(lang="en", ng-app="{% endraw %}{{ cookiecutter.angular_app_name }}{% raw %}")
     head
         meta(charset="utf-8")
         link(rel="shortcut icon", href="/media/images/favicon.png")
@@ -12,7 +12,7 @@ html(lang="en", ng-app="{% endraw %}{{cookiecutter.angular_app_name}}{% raw %}")
         base(href="/")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(name="description", content="Search Stuff")
-        meta(name="author", content="Ofir123")
+        meta(name="author", content="{% endraw %}{{ cookiecutter.email }}{% raw %}")
 
         | {% if USE_LIVE_RELOAD %}
         // Including livereload in production cause a performance hit for users,
@@ -21,7 +21,7 @@ html(lang="en", ng-app="{% endraw %}{{cookiecutter.angular_app_name}}{% raw %}")
         +script("http://localhost:" + buildCfg.livereloadPort + "/livereload.js?snipver=1")
         | {% endif %}
 
-        +script("/media/bower_components/jQuery/dist/jquery.min.js")
+        +script("/media/bower_components/jquery/dist/jquery.min.js")
 
         +style("/media/bower_components/bootstrap/dist/css/bootstrap.min.css")
         +style("/media/bower_components/bootstrap/dist/css/bootstrap-theme.min.css")
